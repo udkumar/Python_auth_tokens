@@ -12,7 +12,6 @@ class RegisterAPI(MethodView):
     User Registration Resource
     """
     def post(self):
-        # get the post data
         post_data = request.get_json()
         # check if user already exists
         user = User.query.filter_by(email=post_data.get('email')).first()
