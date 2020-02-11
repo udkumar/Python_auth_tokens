@@ -1,0 +1,27 @@
+import time
+import json
+import unittest
+
+from app.server import db
+from app.server.models import User, BlacklistToken
+from app.tests.base import BaseTestCase
+
+def register_user(self, email, password):
+  return self.client.post(
+      '/auth/register',
+      data=json.dumps(dict(
+          email=email,
+          password=password
+      )),
+      content_type='application/json',
+  )
+
+def login_user(self, email, password):
+  return self.client.post(
+      '/auth/login',
+      data=json.dumps(dict(
+          email=email,
+          password=password
+      )),
+      content_type='application/json',
+  )
